@@ -15,6 +15,15 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel Margin="20">
+        <TextBlock Margin="0 5" FontSize="28" FontWeight="Bold">Task list</TextBlock>
+        <TextBox Watermark="Napište úkol"/>
+        <Button Background="Green">Přidat úkol</Button>
+        
+        <StackPanel Margin="20">
+            <TextBlock Margin="0 5">Seznam úkolů:</TextBlock>
+            <ListBox x:Name="tasks"/>
+        </StackPanel>
+    </StackPanel>
 
 </Window>

@@ -13,12 +13,12 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UkolnicekZaverecnyProjekt
-build_property.ProjectDir = Z:\C#\UkolnicekZaverecnyProjekt\UkolnicekZaverecnyProjekt\
+build_property.ProjectDir = C:\Users\2021BehuncikJan\Desktop\UkolnicekZaverecnyProjekt\UkolnicekZaverecnyProjekt\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[Z:/C\#/UkolnicekZaverecnyProjekt/UkolnicekZaverecnyProjekt/App.axaml]
+[C:/Users/2021BehuncikJan/Desktop/UkolnicekZaverecnyProjekt/UkolnicekZaverecnyProjekt/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[Z:/C\#/UkolnicekZaverecnyProjekt/UkolnicekZaverecnyProjekt/Views/MainWindow.axaml]
+[C:/Users/2021BehuncikJan/Desktop/UkolnicekZaverecnyProjekt/UkolnicekZaverecnyProjekt/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
