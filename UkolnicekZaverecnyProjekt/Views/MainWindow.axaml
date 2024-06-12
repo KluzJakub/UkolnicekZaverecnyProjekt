@@ -21,9 +21,9 @@
         <Button Background="Green">Přidat úkol</Button>
         
         <StackPanel Margin="20">
-            <TextBlock Margin="0 5">Seznam úkolů:</TextBlock>
-            <ListBox x:Name="tasks"/>
-        </StackPanel>
+  <TextBlock Margin="0 5">Seznam úkolů:</TextBlock>
+  <ListBox x:Name="tasks"/>
+</StackPanel>
     </StackPanel>
 
 </Window>
