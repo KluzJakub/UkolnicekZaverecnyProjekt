@@ -7,23 +7,29 @@
         x:Class="UkolnicekZaverecnyProjekt.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="UkolnicekZaverecnyProjekt">
+        Title="Task list">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <Window.DataContext>
         <vm:MainWindowViewModel/>
-    </Design.DataContext>
+    </Window.DataContext>
 
     <StackPanel Margin="20">
         <TextBlock Margin="0 5" FontSize="28" FontWeight="Bold">Task list</TextBlock>
-        <TextBox Watermark="Napište úkol"/>
-        <Button Background="Green">Přidat úkol</Button>
+        <TextBox x:Name="taskInput" Watermark="Napište úkol"/>
+        <Button Content="Přidat úkol" Background="Green" Command="{Binding AddTaskCommand}" CommandParameter="{Binding Text, ElementName=taskInput}"/>
         
         <StackPanel Margin="20">
-  <TextBlock Margin="0 5">Seznam úkolů:</TextBlock>
-  <ListBox x:Name="tasks"/>
-</StackPanel>
+            <TextBlock Margin="0 5">Seznam úkolů:</TextBlock>
+            <ListBox ItemsSource="{Binding TodoItems}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding IsChecked}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
     </StackPanel>
-
 </Window>

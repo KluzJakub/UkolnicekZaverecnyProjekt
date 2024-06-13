@@ -1,14 +1,28 @@
-using System.Net.Mime;
 using Avalonia.Controls;
+using UkolnicekZaverecnyProjekt.ViewModels;
 
-namespace UkolnicekZaverecnyProjekt.Views;
-
-public partial class MainWindow : Window
+namespace UkolnicekZaverecnyProjekt.Views
 {
+    public partial class MainWindow : Window
+    {
         public MainWindow()
         {
             InitializeComponent();
-            tasks.ItemsSource = new string[]
-                {"První úkol", "Druhý úkol", "Třetí úkol" };
+            DataContext = new MainWindowViewModel(); 
+            InitializeTasks();
         }
+
+        private void InitializeTasks()
+        {
+            var viewModel = DataContext as MainWindowViewModel;
+            if (viewModel != null)
+            {
+                var database = new Database.Database();
+                foreach (var item in database.GetItems())
+                {
+                    viewModel.TodoItems.Add(item);
+                }
+            }
+        }
+    }
 }
