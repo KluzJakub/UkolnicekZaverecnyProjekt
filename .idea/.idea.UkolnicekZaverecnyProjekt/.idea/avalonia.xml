@@ -3,7 +3,9 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="UkolnicekZaverecnyProjekt/App.axaml" value="UkolnicekZaverecnyProjekt/UkolnicekZaverecnyProjekt.csproj" />
         <entry key="UkolnicekZaverecnyProjekt/Views/MainWindow.axaml" value="UkolnicekZaverecnyProjekt/UkolnicekZaverecnyProjekt.csproj" />
+        <entry key="UkolnicekZaverecnyProjekt/Views/Themes.axaml" value="UkolnicekZaverecnyProjekt/UkolnicekZaverecnyProjekt.csproj" />
       </map>
     </option>
   </component>

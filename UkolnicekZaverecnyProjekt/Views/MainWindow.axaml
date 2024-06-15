@@ -8,48 +8,50 @@
         x:Class="UkolnicekZaverecnyProjekt.Views.MainWindow"
         x:DataType="viewmodels:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Task list">
-
+        Title="Úkolníček kluků ze Zlína">
     <!-- Nastavení DataContext přímo v XAML -->
-    <Window.DataContext>
-        <viewmodels:MainWindowViewModel/>
-    </Window.DataContext>
+<Window.DataContext>
+    <viewmodels:MainWindowViewModel/>
+</Window.DataContext>
 
-    <StackPanel Margin="20">
-        <!-- Titulek aplikace -->
-        <TextBlock Margin="0 5" FontSize="28" FontWeight="Bold" Foreground="DarkBlue">Úkolníček kluků ze Zlína</TextBlock>
+<StackPanel Margin="20" Spacing="10">
+    <!-- Titulek aplikace -->
+    <TextBlock Margin="0 5" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource BaseMediumHigh}">Úkolníček kluků ze Zlína</TextBlock>
+    
+    <!-- TextBox pro vstup úkolu -->
+    <TextBox x:Name="taskInput" Watermark="Napište úkol" Margin="0,10,0,0" Padding="5" FontSize="16" Background="{DynamicResource AltLow}"/>
+    
+    <!-- Tlačítko pro přidání úkolu -->
+    <!-- Command je vázán na AddTaskCommand ve ViewModelu -->
+    <!-- CommandParameter je vázán na text z taskInput -->
+    <Button Content="Přidat úkol" Background="{DynamicResource Accent}" Foreground="{DynamicResource AltHigh}" FontSize="16" Margin="0,10,0,0" Padding="10" Command="{Binding AddTaskCommand}" CommandParameter="{Binding Text, ElementName=taskInput}"/>
+    
+    <StackPanel Margin="20,10,0,0" Spacing="10">
+        <!-- Nadpis seznamu úkolů -->
+        <TextBlock Margin="0 5" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource BaseMediumHigh}">Seznam úkolů:</TextBlock>
         
-        <!-- TextBox pro vstup úkolu -->
-        <TextBox x:Name="taskInput" Watermark="Napište úkol" Margin="0,10,0,0" Padding="5" FontSize="16" Background="#f0f0f0"/>
-        
-        <!-- Tlačítko pro přidání úkolu -->
-        <!-- Command je vázán na AddTaskCommand ve ViewModelu -->
-        <!-- CommandParameter je vázán na text z taskInput -->
-        <Button Content="Přidat úkol" Background="Green" Foreground="White" FontSize="16" Margin="0,10,0,0" Padding="10" Command="{Binding AddTaskCommand}" CommandParameter="{Binding Text, ElementName=taskInput}"/>
-        
-        <StackPanel Margin="20,10,0,0">
-            <!-- Nadpis seznamu úkolů -->
-            <TextBlock Margin="0 5" FontSize="24" FontWeight="Bold" Foreground="DarkBlue">Seznam úkolů:</TextBlock>
-            
-            <!-- ListBox pro zobrazení seznamu úkolů -->
-            <!-- ItemsSource je vázán na TodoItems ve ViewModelu -->
-            <ListBox ItemsSource="{Binding TodoItems}" BorderThickness="1" BorderBrush="Gray" Background="#ffffff" Margin="0,10,0,0" Padding="5">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="0,0,0,1" BorderBrush="LightGray" Padding="5">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                <!-- CheckBox pro označení dokončeného úkolu -->
-                                <!-- IsChecked je vázáno na vlastnost IsChecked úkolu -->
-                                <CheckBox IsChecked="{Binding IsChecked}" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                
-                                <!-- TextBlock pro zobrazení názvu úkolu -->
-                                <!-- Text je vázán na vlastnost Name úkolu -->
-                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="16"/>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
+        <!-- ListBox pro zobrazení seznamu úkolů -->
+        <!-- ItemsSource je vázán na TodoItems ve ViewModelu -->
+        <ListBox ItemsSource="{Binding TodoItems}" BorderThickness="1" BorderBrush="{DynamicResource BaseMedium}" Background="{DynamicResource AltLow}" Margin="0,10,0,0" Padding="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BaseLow}" Padding="5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="10">
+                            <!-- CheckBox pro označení dokončeného úkolu -->
+                            <!-- IsChecked je vázán na vlastnost IsChecked úkolu -->
+                            <CheckBox IsChecked="{Binding IsChecked}" VerticalAlignment="Center"/>
+                            
+                            <!-- TextBlock pro zobrazení názvu úkolu -->
+                            <!-- Text je vázán na vlastnost Name úkolu -->
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontSize="16"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </StackPanel>
+</StackPanel>
 </Window>
+
+
+
