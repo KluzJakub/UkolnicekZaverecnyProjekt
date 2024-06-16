@@ -31,6 +31,9 @@ namespace UkolnicekZaverecnyProjekt.Viewmodels
         {
             TodoItems = new ObservableCollection<TodoItem>();
             AddTaskCommand = ReactiveCommand.Create<string>(AddTask);
+
+            // Načtení úkolů ze souboru při inicializaci ViewModelu
+            LoadTasksFromFile();
         }
 
         // Metoda pro přidání nového úkolu do kolekce, databáze a souboru
@@ -40,14 +43,8 @@ namespace UkolnicekZaverecnyProjekt.Viewmodels
             if (string.IsNullOrWhiteSpace(taskName))
                 return;
 
-            // Vytvoření nové instance databáze
-            var database = new Database.Database();
-
             // Vytvoření nového úkolu s poskytnutým názvem
             var newTask = new TodoItem { Name = taskName };
-
-            // Přidání nového úkolu do databáze
-            database.AddItem(taskName);
 
             // Přidání nového úkolu do ObservableCollection
             TodoItems.Add(newTask);
@@ -61,7 +58,7 @@ namespace UkolnicekZaverecnyProjekt.Viewmodels
         {
             try
             {
-                string filePath = "../../../Database/data.txt"; 
+                string filePath = "../../../Database/data.txt";
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
                     writer.WriteLine($"{task.Name} ({task.IsChecked})");
@@ -71,6 +68,36 @@ namespace UkolnicekZaverecnyProjekt.Viewmodels
             catch (Exception ex)
             {
                 Console.WriteLine($"Chyba při ukládání úkolu do souboru: {ex.Message}");
+            }
+        }
+
+        // Metoda pro načtení úkolů ze souboru
+        private void LoadTasksFromFile()
+        {
+            try
+            {
+                string filePath = "../../../Database/data.txt";
+                if (File.Exists(filePath))
+                {
+                    using (StreamReader reader = new StreamReader(filePath))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            var parts = line.Split(new[] { " (" }, StringSplitOptions.None);
+                            if (parts.Length == 2)
+                            {
+                                var name = parts[0].Trim();
+                                var isChecked = parts[1].Replace(")", "").Trim().ToLower() == "true";
+                                TodoItems.Add(new TodoItem { Name = name, IsChecked = isChecked });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Chyba při načítání úkolů ze souboru: {ex.Message}");
             }
         }
     }
