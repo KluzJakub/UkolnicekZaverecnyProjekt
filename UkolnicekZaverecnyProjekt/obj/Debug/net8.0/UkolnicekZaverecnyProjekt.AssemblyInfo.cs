@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UkolnicekZaverecnyProjekt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f85ecbac8da95de4ebc81e25f7ddb96c04f75048")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3cb4bb69e9908b93b3d98058c20bb7630f5fa40")]
 [assembly: System.Reflection.AssemblyProductAttribute("UkolnicekZaverecnyProjekt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UkolnicekZaverecnyProjekt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
